@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Vision Mirror</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <main class="app">
+      <section class="quiz" aria-live="polite">
+        <header class="quiz__header">
+          <h1>Mirror Vision Builder</h1>
+          <p>Create a lock screen that keeps your dream in focus.</p>
+          <div class="progress" role="status" aria-live="polite">
+            <div class="progress__bar" id="progressBar"></div>
+          </div>
+        </header>
+        <form id="visionForm" class="quiz__form">
+          <div class="step" data-step="1">
+            <h2>What is your guiding word for the year?</h2>
+            <p class="hint">Keep it short and powerful.</p>
+            <input
+              type="text"
+              name="guidingWord"
+              placeholder="e.g. Flourish"
+              required
+              maxlength="20"
+            />
+          </div>
+
+          <div class="step" data-step="2" hidden>
+            <h2>Choose a focus area</h2>
+            <p class="hint">We&apos;ll tune the layout to match your vibe.</p>
+            <div class="choices">
+              <label class="choice">
+                <input type="radio" name="focus" value="career" required />
+                <span>Career Momentum</span>
+              </label>
+              <label class="choice">
+                <input type="radio" name="focus" value="wellness" />
+                <span>Wellness Rituals</span>
+              </label>
+              <label class="choice">
+                <input type="radio" name="focus" value="relationships" />
+                <span>Radiant Relationships</span>
+              </label>
+            </div>
+          </div>
+
+          <div class="step" data-step="3" hidden>
+            <h2>Write a short affirmation</h2>
+            <p class="hint">This will sit in the center of your screen.</p>
+            <textarea
+              name="affirmation"
+              rows="3"
+              placeholder="I show up every day for the life I desire."
+              required
+              maxlength="120"
+            ></textarea>
+          </div>
+
+          <div class="step" data-step="4" hidden>
+            <h2>Pick a mood palette</h2>
+            <p class="hint">We match the colors to a subtle gradient.</p>
+            <div class="palettes">
+              <label class="palette">
+                <input type="radio" name="palette" value="sunrise" required />
+                <span class="swatch" style="--start:#ff9a9e; --end:#fad0c4"></span>
+                Sunrise Bloom
+              </label>
+              <label class="palette">
+                <input type="radio" name="palette" value="ocean" />
+                <span class="swatch" style="--start:#43cea2; --end:#185a9d"></span>
+                Ocean Focus
+              </label>
+              <label class="palette">
+                <input type="radio" name="palette" value="midnight" />
+                <span class="swatch" style="--start:#1e3c72; --end:#2a5298"></span>
+                Midnight Muse
+              </label>
+            </div>
+          </div>
+
+          <div class="quiz__actions">
+            <button type="button" class="btn btn--ghost" id="backBtn" disabled>
+              Back
+            </button>
+            <button type="button" class="btn" id="nextBtn">Next</button>
+          </div>
+        </form>
+      </section>
+
+      <section class="result" id="resultSection" hidden>
+        <h2>Your lock screen is ready ✨</h2>
+        <p>Tap the preview to save or use the download button.</p>
+        <div class="preview" id="previewContainer">
+          <canvas id="visionCanvas" width="1290" height="2796" hidden></canvas>
+          <img id="visionPreview" alt="Vision board lock screen preview" />
+        </div>
+        <a id="downloadLink" class="btn" download="vision-lockscreen.png">Download</a>
+        <button type="button" class="btn btn--ghost" id="restartBtn">
+          Make another
+        </button>
+      </section>
+    </main>
+    <script src="app.js" type="module"></script>
+  </body>
+</html>
